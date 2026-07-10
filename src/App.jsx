@@ -14,7 +14,7 @@ export default function App() {
 
   if (!ready) {
     return (
-      <div className="h-screen flex items-center justify-center bg-dark-grey dark:bg-gray-900 text-white dark:text-white">
+      <div className="h-screen flex items-center justify-center bg-dark-grey text-3xl font-bold mb-8 tracking-tight text-center text-white">
         Connecting...
       </div>
     );
