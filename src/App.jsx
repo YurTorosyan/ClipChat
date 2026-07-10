@@ -5,6 +5,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ensureAnonymousAuth } from './services/firebase';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 import Home from './components/Home';
 import Room from './components/Room';
 
@@ -28,6 +30,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/room/:roomId" element={<Room />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
             </Routes>
           </BrowserRouter>
         </LanguageProvider>

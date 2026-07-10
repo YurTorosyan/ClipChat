@@ -46,6 +46,45 @@ const translations = {
     seoRoomTitle: 'Temporary chat room – Clipboard Chat',
     seoRoomDesc: 'Secure real‑time space for sharing data between your devices.',
     logoAlt: 'Clipboard Chat Logo',
+    faqTitle: 'Frequently Asked Questions',
+    faqItems: [
+      {
+        question: 'What is Clipboard Chat and how to use it?',
+        answer: 'Clipboard Chat is a free anonymous web service for instant clipboard sync and file sharing between devices in real time. To get started, simply create a temporary group or join by ID/QR code from your phone, PC, or laptop. Copy text in one click and share links without any limits.'
+      },
+      {
+        question: 'Do I need to register or provide personal data?',
+        answer: 'No. Our online clipboard is completely anonymous. You don’t need to enter an email, password, or phone number. Room access is created instantly, and your session is saved locally in your browser.'
+      },
+      {
+        question: 'Are there any file size limits?',
+        answer: 'Thanks to our hybrid architecture and WebRTC P2P (Peer-to-Peer) technology, large files, archives, and videos are transferred directly from browser to browser, bypassing intermediate servers. This means there are no file size limits (you can transfer files of 1 GB, 2 GB, and more) and it’s completely free.'
+      },
+      {
+        question: 'How is security and privacy ensured?',
+        answer: 'All files are transferred via an encrypted channel directly between your devices and are not stored anywhere. Text messages and links in rooms are synced through a temporary database and are automatically deleted after 24 hours of room inactivity.'
+      }
+    ],
+    privacyPolicyTitle: 'Privacy Policy',
+    privacyPolicyContent: [
+      'Effective Date: January 1, 2026',
+      '1. Data Collection: The Service does not collect, store, or share with third parties any personal data (IP addresses, email addresses, names, etc.). Authentication is anonymous.',
+      '2. Files and Clipboard: Files are transferred directly between users via P2P. Clipboard text is processed locally and temporarily transmitted in encrypted form for synchronization, after which it is erased.',
+      '3. Advertising and Cookies: The site uses cookies to maintain the session of the room and to integrate third-party advertising networks for displaying ads.',
+      '4. Third-Party Services: We may use analytics tools that operate with anonymized data. These services have their own privacy policies.',
+      '5. Changes: We reserve the right to update this Privacy Policy. Any changes will be posted on this page.',
+    ],
+    termsOfServiceTitle: 'Terms of Service',
+    termsOfServiceContent: [
+      'Effective Date: January 1, 2026',
+      '1. Use of Service: The Service is provided "as is". The administration is not responsible for temporary network failures or loss of synchronization.',
+      '2. User Responsibility: Users agree not to use the clipboard for transmitting malware or content that violates applicable laws. Only devices connected to a private room are responsible for its content.',
+      '3. Availability: The Service does not guarantee 100% uptime and may be suspended for maintenance or due to force majeure.',
+      '4. Indemnification: You agree to indemnify and hold harmless the Service owners from any claims arising out of your use of the Service.',
+      '5. Governing Law: These Terms shall be governed by the laws of the jurisdiction where the Service provider is located.',
+    ],
+    privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
 
   },
   ru: {
@@ -94,6 +133,45 @@ const translations = {
     seoRoomTitle: 'Временная комната чата — Clipboard Chat',
     seoRoomDesc: 'Безопасное real‑time пространство для обмена данными между вашими устройствами.',
     logoAlt: 'Логотип Clipboard Chat',
+    faqTitle: 'Часто задаваемые вопросы',
+    faqItems: [
+      {
+        question: 'Что такое Clipboard Chat и как им пользоваться?',
+        answer: 'Clipboard Chat — это бесплатный анонимный веб-сервис для мгновенной синхронизации буфера обмена и обмена файлами между устройствами в реальном времени. Чтобы начать, просто создайте временную группу или войдите по ID/QR-коду с телефона, ПК или ноутбука. Быстро копируйте текст в один клик и делитесь ссылками без ограничений.'
+      },
+      {
+        question: 'Нужна ли регистрация или ввод личных данных?',
+        answer: 'Нет. Наш онлайн буфер обмена полностью анонимен. Вам не нужно вводить email, пароль или номер телефона. Доступ к комнате обмена создается мгновенно, а сессия сохраняется локально в вашем браузере.'
+      },
+      {
+        question: 'Каковы ограничения на размер передаваемых файлов?',
+        answer: 'Благодаря использованию гибридной архитектуры и технологии WebRTC P2P (Peer-to-Peer), тяжелые файлы, архивы и видео передаются напрямую из браузера в браузер, минуя промежуточные серверы. Это означает, что у нас нет ограничений на размер файлов (вы можете передавать файлы объемом 1 ГБ, 2 ГБ и более) и это абсолютно бесплатно.'
+      },
+      {
+        question: 'Как обеспечивается безопасность и конфиденциальность?',
+        answer: 'Все файлы передаются по зашифрованному каналу напрямую между вашими устройствами и нигде не сохраняются. Текстовые сообщения и ссылки в комнатах синхронизируются через временную базу данных и автоматически удаляются через 24 часа неактивности комнаты.'
+      }
+    ],
+    privacyPolicyTitle: 'Политика конфиденциальности',
+    privacyPolicyContent: [
+      'Дата вступления в силу: 1 января 2026 г.',
+      '1. Сбор данных: Сервис не собирает, не хранит и не передает третьим лицам персональные данные (IP-адреса, email, имена и т.д.). Авторизация является анонимной.',
+      '2. Файлы и Буфер обмена: Файлы передаются напрямую между пользователями (P2P). Текст буфера обмена обрабатывается локально и временно транслируется в зашифрованном виде для синхронизации, после чего стирается.',
+      '3. Реклама и Cookies: Сайт использует файлы cookie для поддержания сессии комнаты и интеграции сторонних рекламных сетей для показа объявлений.',
+      '4. Сторонние сервисы: Мы можем использовать инструменты аналитики, работающие с анонимизированными данными. Эти сервисы имеют собственные политики конфиденциальности.',
+      '5. Изменения: Мы оставляем за собой право обновлять данную Политику конфиденциальности. Все изменения будут опубликованы на этой странице.',
+    ],
+    termsOfServiceTitle: 'Условия использования',
+    termsOfServiceContent: [
+      'Дата вступления в силу: 1 января 2026 г.',
+      '1. Использование Сервиса: Сервис предоставляется по принципу «как есть» (as is). Администрация не несет ответственности за временные сбои в сети или потерю синхронизации.',
+      '2. Ответственность Пользователей: Пользователи обязуются не использовать буфер обмена для передачи вредоносного ПО и контента, нарушающего законодательство. За контент внутри приватной комнаты отвечают только подключенные к ней устройства.',
+      '3. Доступность: Сервис не гарантирует 100% бесперебойную работу и может быть приостановлен для технического обслуживания или по форс-мажорным обстоятельствам.',
+      '4. Возмещение ущерба: Вы соглашаетесь оградить владельцев Сервиса от любых претензий, возникающих в связи с использованием вами Сервиса.',
+      '5. Применимое право: Настоящие Условия регулируются законодательством юрисдикции, в которой находится поставщик услуг.',
+    ],
+    privacyPolicy: 'Политика конфиденциальности',
+    termsOfService: 'Условия использования',
   }
 };
 

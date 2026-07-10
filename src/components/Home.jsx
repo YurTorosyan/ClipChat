@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import FAQSection from './FAQSection';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { db } from '../services/firebase';
@@ -178,10 +180,18 @@ export default function Home() {
             {error && <p className="text-red-500 text-center">{error}</p>}
           </div>
         </main>
-
-        <footer className="mt-8 text-center text-xs text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Clipboard Chat. {t('appTitle')}
-        </footer>
+        <FAQSection />
+        <footer className="w-full max-w-3xl mx-auto mt-12 pb-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-6">
+        <div className="flex flex-wrap justify-center gap-4 mb-2">
+          <Link to="/privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            {t('privacyPolicy')}
+          </Link>
+          <Link to="/terms" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            {t('termsOfService')}
+          </Link>
+        </div>
+        <p>© {new Date().getFullYear()} Clipboard Chat. {t('appTitle')}</p>
+      </footer>
       </div>
     </>
   );
