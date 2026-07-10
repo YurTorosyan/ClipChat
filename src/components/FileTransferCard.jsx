@@ -1,34 +1,34 @@
 import { useState } from 'react';
-import AdPlaceholder from './AdPlaceholder';
+import AdUnit from './AdUnit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function FileTransferCard({ message, requestFile, localFile }) {
   const [downloading, setDownloading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState('');
   const [blobUrl, setBlobUrl] = useState(null);
-  const [showPreview, setShowPreview] = useState(false);
+  const { t } = useLanguage();
 
   const isImage = message.fileType?.startsWith('image/');
-
-  // Если файл есть локально (отправитель), сразу показываем превью
   const localPreviewUrl = localFile ? URL.createObjectURL(localFile) : null;
 
   const startDownload = async () => {
     if (downloading || blobUrl || localFile) return;
     setDownloading(true);
-    setStatus('Подключение...');
+    setStatus(t('connecting'));
     try {
       const result = await requestFile(message.peerId, (p) => {
-        if (p.status === 'started') setStatus(`Получение ${p.fileName}`);
+        if (p.status === 'started') setStatus(`${t('receiving')} ${p.fileName}`);
         else if (p.status === 'progress') {
           const perc = Math.round((p.received / p.total) * 100);
           setProgress(perc);
-          setStatus(`Получение ${perc}%`);
+          setStatus(`${t('receiving')} ${perc}%`);
         }
       });
       setBlobUrl(result.url);
-      setStatus('Готово');
-      // Автоскачивание для не-изображений
+      setStatus(t('ready'));
       if (!isImage) {
         const a = document.createElement('a');
         a.href = result.url;
@@ -36,25 +36,24 @@ export default function FileTransferCard({ message, requestFile, localFile }) {
         a.click();
       }
     } catch (err) {
-      setStatus('Ошибка: ' + err.message);
+      setStatus(`${t('error')}: ${err.message}`);
     } finally {
       setDownloading(false);
     }
   };
 
   return (
-    <div className="bg-gray-800 rounded-xl p-4">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
       <div className="flex items-center justify-between mb-2">
         <span className="font-medium truncate">{message.fileName}</span>
-        <span className="text-sm text-gray-400 ml-2">
+        <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">
           {message.fileSize > 1024 * 1024
             ? (message.fileSize / 1024 / 1024).toFixed(1) + ' MB'
             : (message.fileSize / 1024).toFixed(1) + ' KB'}
         </span>
       </div>
 
-      {/* Превью для изображения, если доступно локально или уже скачано */}
-      {(localPreviewUrl && isImage) && (
+      {localPreviewUrl && isImage && (
         <div className="mb-3">
           <img
             src={localPreviewUrl}
@@ -62,7 +61,7 @@ export default function FileTransferCard({ message, requestFile, localFile }) {
             className="max-h-48 rounded-lg object-cover cursor-pointer"
             onClick={() => window.open(localPreviewUrl, '_blank')}
           />
-          <p className="text-xs text-green-400 mt-1">Локальное превью (файл не загружен на сервер)</p>
+          <p className="text-xs text-green-600 dark:text-green-400 mt-1">{t('localPreview')}</p>
         </div>
       )}
 
@@ -80,27 +79,29 @@ export default function FileTransferCard({ message, requestFile, localFile }) {
       {!localFile && !downloading && !blobUrl && (
         <button
           onClick={startDownload}
-          className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2"
         >
-          {isImage ? 'Скачать изображение' : 'Скачать (P2P)'}
+          <FontAwesomeIcon icon={faDownload} />
+          {isImage ? t('downloadImage') : t('download')}
         </button>
       )}
 
       {downloading && (
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm text-blue-300">
+        <div className="space-y-2 mt-3">
+          <div className="flex justify-between text-sm text-blue-600 dark:text-blue-400">
             <span>{status}</span><span>{progress}%</span>
           </div>
-          <div className="w-full bg-gray-600 rounded-full h-2">
-            <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${progress}%` }}></div>
+          <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+            <div className="bg-blue-500 h-2 rounded-full transition-all" style={{ width: `${progress}%` }}></div>
           </div>
-          <AdPlaceholder type="infeed" />
+          <AdUnit type="infeed" />
         </div>
       )}
 
       {blobUrl && !isImage && (
-        <div className="text-green-400 text-sm mt-2">
-          Файл готов. <a href={blobUrl} download className="underline">Нажмите для скачивания</a>
+        <div className="text-green-600 dark:text-green-400 text-sm mt-2 flex items-center gap-1">
+          <FontAwesomeIcon icon={faCheckCircle} />
+          {t('fileReady')} <a href={blobUrl} download className="underline">{t('clickToDownload')}</a>
         </div>
       )}
     </div>
