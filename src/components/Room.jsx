@@ -14,6 +14,7 @@ import AdUnit from './AdUnit';
 import { useLanguage } from '../contexts/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCopy, faQrcode } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet-async';
 
 export default function Room() {
   const { roomId } = useParams();
@@ -71,8 +72,27 @@ export default function Room() {
   }
 
   const currentUserId = auth.currentUser?.uid || 'anon';
-
+  const roomTitle = `${roomName} — ${t('seoRoomTitle')}`;
+  const roomDesc = t('seoRoomDesc') + ` ${roomId}`;
+  const baseUrl = window.location.origin;
+  
   return (
+    <>
+    <Helmet>
+        <title>{roomTitle}</title>
+        <meta name="description" content={roomDesc} />
+        <meta property="og:title" content={roomTitle} />
+        <meta property="og:description" content={roomDesc} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:image" content={`${baseUrl}/favicon.svg`} />
+        <meta property="og:image:alt" content={t('logoAlt')} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={roomTitle} />
+        <meta name="twitter:description" content={roomDesc} />
+        <link rel="canonical" href={window.location.href} />
+      </Helmet>
+
+
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white flex flex-col transition-colors">
       <header className="bg-gray-100 dark:bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex items-center gap-3">
@@ -142,6 +162,10 @@ export default function Room() {
           </div>
         </main>
       </div>
+      <footer className="text-center text-xs text-gray-500 dark:text-gray-400 py-2 border-t border-gray-200 dark:border-gray-700">
+        © {new Date().getFullYear()} Clipboard Chat
+      </footer>
     </div>
+    </>
   );
 }

@@ -1,0 +1,16 @@
+{
+  "name": "Clipboard Chat – P2P Clipboard & File Sharing",
+  "short_name": "ClipChat",
+  "description": "Anonymous clipboard and file sharing between devices without registration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -40,6 +40,13 @@ const translations = {
     clickToDownload: 'Click to download',
     deleteConfirm: 'Are you sure?',
     untitled: 'Untitled',
+    // SEO
+    seoHomeTitle: 'Clipboard Chat – Anonymous Clipboard & P2P File Sharing Online',
+    seoHomeDesc: 'Instant and anonymous clipboard sync between devices. Create temporary rooms, share text, links and files via WebRTC without registration.',
+    seoRoomTitle: 'Temporary chat room – Clipboard Chat',
+    seoRoomDesc: 'Secure real‑time space for sharing data between your devices.',
+    logoAlt: 'Clipboard Chat Logo',
+
   },
   ru: {
     appTitle: 'Clipboard Chat',
@@ -82,6 +89,11 @@ const translations = {
     clickToDownload: 'Нажмите для скачивания',
     deleteConfirm: 'Вы уверены?',
     untitled: 'Без названия',
+    seoHomeTitle: 'Clipboard Chat — Анонимный буфер обмена и P2P обмен файлами онлайн',
+    seoHomeDesc: 'Быстрый и анонимный буфер обмена между устройствами в один клик. Создавайте временные группы, делитесь текстом, ссылками и файлами через WebRTC напрямую без регистрации.',
+    seoRoomTitle: 'Временная комната чата — Clipboard Chat',
+    seoRoomDesc: 'Безопасное real‑time пространство для обмена данными между вашими устройствами.',
+    logoAlt: 'Логотип Clipboard Chat',
   }
 };
 
